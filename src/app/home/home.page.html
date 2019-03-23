@@ -1,0 +1,58 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      Home
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list>
+    <ion-item>
+      <ion-input type="password" [(ngModel)]="token" placeholder="token"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input [(ngModel)]="server_port" placeholder="server port"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input [(ngModel)]="password" placeholder="password"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>fast_open</ion-label>
+      <ion-toggle [(ngModel)]="fast_open"></ion-toggle>
+    </ion-item>
+    <ion-item>
+      <ion-label>no_delay</ion-label>
+      <ion-toggle [(ngModel)]="no_delay"></ion-toggle>
+    </ion-item>
+    <ion-item>
+      <ion-input [(ngModel)]="mode" placeholder="mode"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input [(ngModel)]="method" placeholder="method"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input [(ngModel)]="plugin" placeholder="plugin"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input [(ngModel)]="plugin_opts" placeholder="plugin_opts"></ion-input>
+    </ion-item>
+  </ion-list>
+  <ion-button (click)="add()">add</ion-button>
+  <ion-button (click)="delete()">delete</ion-button>
+  <ion-button (click)="ping()">ping</ion-button>
+  <ion-button (click)="list()">list</ion-button>
+  <ion-list>
+    <ion-item *ngFor="let item of listArr; let i=index" (click)="itemClick(i)">
+      <ion-row>
+        <ion-col>{{item.server_port}}</ion-col>
+        <ion-col>{{item.password}}</ion-col>
+        <ion-col>{{item.method}}</ion-col>
+      </ion-row>
+    </ion-item>
+  </ion-list>
+  <div>{{resultMsg}}</div>
+</ion-content>
